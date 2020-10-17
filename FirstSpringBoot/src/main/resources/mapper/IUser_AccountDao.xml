@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.IUser_AccountDao">
+    <resultMap id="UserAccountEntity" type="com.example.demo.entity.User_Account">
+        <id column="ID" property="id" jdbcType="INTEGER"></id>
+        <result column="USER_CODE" property="user_code" jdbcType="VARCHAR"></result>
+        <result column="USER_NAME" property="user_name" jdbcType="VARCHAR"></result>
+        <result column="USER_PASSWORD" property="user_password" jdbcType="VARCHAR"></result>
+    </resultMap>
+
+    <select id="getAccounts" resultMap="UserAccountEntity"  parameterType="com.example.demo.entity.User_Account" >
+        select * from USER_ACCOUNT
+    </select>
+
+    <select id="getAccountByUserCode" resultMap="UserAccountEntity"  parameterType="String" >
+        select * from USER_ACCOUNT t where t.user_code=#{user_code} LIMIT 1
+    </select>
+
+</mapper>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<classPathEntry
+        location="D:\LEARN\JAVA\jar_Ref\soft\postgresql-9.2-1003-jdbc4.jar" />
+	<context id="tts2">
+		<!-- 整合lombok-->
+		<plugin type="com.chrm.mybatis.generator.plugins.LombokPlugin" >
+			<property name="hasLombok" value="true"/>
+		</plugin>
+<!--		&lt;!&ndash; 此处是将Example改名为Criteria 当然 想改成什么都行~    &ndash;&gt;-->
+<!--		<plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">-->
+<!--			<property name="searchString" value="Example$" />-->
+<!--			&lt;!&ndash; 替换后<property name="replaceString" value="Criteria" />&ndash;&gt;-->
+<!--			<property name="replaceString" value="Query" />-->
+<!--		</plugin>-->
+
+<!--		&lt;!&ndash; 此处是将UserMapper.xml改名为UserDao.xml 当然 想改成什么都行~ &ndash;&gt;-->
+<!--		<plugin type="org.mybatis.generator.plugins.rename.RenameSqlMapperPlugin">-->
+<!--			<property name="searchString" value="Mapper" />-->
+<!--			<property name="replaceString" value="Dao" />-->
+<!--		</plugin>-->
+
+<!--		&lt;!&ndash; 此处是将UserMapper改名为UserDao 接口 当然 想改成什么都行~  &ndash;&gt;-->
+<!--		<plugin type="org.mybatis.generator.plugins.rename.RenameJavaMapperPlugin">-->
+<!--			<property name="searchString" value="Mapper$" />-->
+<!--			<property name="replaceString" value="Dao" />-->
+<!--		</plugin>-->
+
+		<jdbcConnection driverClass="org.postgresql.Driver"
+			connectionURL="jdbc:postgresql://localhost:5432/myschool"
+			userId="postgres" password="pg133233">
+		</jdbcConnection>
+
+		<javaModelGenerator targetPackage="com.example.demo.agenerate" targetProject="src\main\java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<sqlMapGenerator targetPackage="com.example.demo.agenerate"  targetProject="src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<javaClientGenerator type="XMLMAPPER" targetPackage="com.example.demo.agenerate"  targetProject="src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+         <table schema="public" mapperName="Company2Dao" tableName="company2" domainObjectName="Company2"  enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" ></table>
+        <!--
+        <table schema="public" tableName="operation" domainObjectName="Operation" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true" ></table>
+        -->
+        </context>
+</generatorConfiguration>
+
+<!-- java -jar mybatis-generator-core-1.3.2.jar -configfile /home/reeboo/workspace/ticket-tts/mybatisGeneratorConfig.xml -->
